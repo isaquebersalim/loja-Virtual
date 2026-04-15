@@ -13,9 +13,10 @@ class ProductAdapter(private val products: List<Product>) :
     RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
 
     class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val txtNome: TextView = view.findViewById(R.id.txt_nome)
-        val txtCodigo: TextView = view.findViewById(R.id.txt_codigo)
-        val txtPreco: TextView = view.findViewById(R.id.txt_preco)
+        val txtNome: TextView = view.findViewById(R.id.text_product_name)
+        val txtCodigo: TextView = view.findViewById(R.id.text_product_code)
+        val txtPreco: TextView = view.findViewById(R.id.text_product_price)
+        val txtQuantidade: TextView = view.findViewById(R.id.text_product_quantity)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
@@ -28,6 +29,7 @@ class ProductAdapter(private val products: List<Product>) :
         val product = products[position]
         holder.txtNome.text = product.name
         holder.txtCodigo.text = "Código: ${product.code}"
+        holder.txtQuantidade.text = "Estoque: ${product.quantity}"
         
         val format = NumberFormat.getCurrencyInstance(Locale("pt", "BR"))
         holder.txtPreco.text = format.format(product.price)
